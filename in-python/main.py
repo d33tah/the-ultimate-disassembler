@@ -8,7 +8,10 @@ def disassemble(filename):
             byte = f.read(1)
             if byte == '':
                 break
-            print("db %s" % hex(ord(byte)))
+            if byte == "\x90":
+                print("nop")
+            else:
+                print("db %s" % hex(ord(byte)))
 
 if __name__ == "__main__":
     if len(sys.argv) < 2:
